@@ -1,7 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { ViewId, Announcement } from "@/types";
+import { getQuoteForDate } from "@/lib/quotes";
+import { DEFAULT_QUOTE } from "@/data/quotes";
+
+// Values derived from the viewer's clock are client-only. useSyncExternalStore
+// renders the server snapshot during SSR/hydration (so markup matches) and the
+// client snapshot right after, without a setState-in-effect cascade.
+const subscribeNever = () => () => {};
+const getTodayDate = () =>
+  new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+const getServerTodayDate = () => "";
+const getTodayQuote = () => getQuoteForDate(new Date());
+const getServerQuote = () => DEFAULT_QUOTE;
+
+// Theme: the `dark` class on <html> is the single source of truth. Read it as
+// an external store so the mount effect and the toggle only touch the DOM.
+const subscribeToThemeClass = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+};
+const getIsDark = () => document.documentElement.classList.contains("dark");
+const getServerIsDark = () => false;
 
 export default function GazetteClient({
   initialAnnouncements,
@@ -9,33 +38,35 @@ export default function GazetteClient({
   initialAnnouncements: Announcement[];
 }) {
   const [activeView, setActiveView] = useState<ViewId>("frontpage");
-  const [isDark, setIsDark] = useState(false);
+  const isDark = useSyncExternalStore(
+    subscribeToThemeClass,
+    getIsDark,
+    getServerIsDark
+  );
   const [copiedBootcamp, setCopiedBootcamp] = useState(false);
-  const [todayDate, setTodayDate] = useState<string>("");
+  const todayDate = useSyncExternalStore(
+    subscribeNever,
+    getTodayDate,
+    getServerTodayDate
+  );
+  const quote = useSyncExternalStore(
+    subscribeNever,
+    getTodayQuote,
+    getServerQuote
+  );
 
   useEffect(() => {
-    const now = new Date();
-    setTodayDate(
-      now.toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })
-    );
-
     const savedTheme = localStorage.getItem("fossc_dark");
     if (
       savedTheme === "1" ||
       (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
-      setIsDark(true);
     }
   }, []);
 
   const toggleDarkMode = () => {
     const nextDark = !isDark;
-    setIsDark(nextDark);
     if (nextDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("fossc_dark", "1");
@@ -185,17 +216,17 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               <div className="lwn-sidebar-title">HOURS &amp; VENUE</div>
               <div className="lwn-sidebar-body text-xs space-y-2 font-sans">
                 <div>
-                  <strong>Daily Lab Hours:</strong>
+                  <strong>Daily Open Hours:</strong>
                   <br />
                   Everyday after classes end
                 </div>
                 <div>
-                  <strong>Weekly General Sync:</strong>
+                  <strong>Weekly Meetup:</strong>
                   <br />
                   Fridays @ 5:00 PM IST
                 </div>
                 <div>
-                  <strong>Lab Location:</strong>
+                  <strong>Club Room Location:</strong>
                   <br />
                   H808, CSE-AI / AI&amp;ML Dept, KIET
                 </div>
@@ -207,13 +238,13 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               </div>
             </div>
 
-            {/* Sidebar Box 3: Quote of the Week */}
+            {/* Sidebar Box 3: Quote of the Day */}
             <div className="lwn-sidebar-box">
-              <div className="lwn-sidebar-title">QUOTE OF THE WEEK</div>
+              <div className="lwn-sidebar-title">QUOTE OF THE DAY</div>
               <div className="lwn-sidebar-body font-serif italic text-xs">
-                &ldquo;Talk is cheap. Show me the code.&rdquo;
+                &ldquo;{quote.text}&rdquo;
                 <div className="font-sans not-italic font-bold text-right mt-1 text-[11px] text-[#555] dark:text-[#888]">
-                  — Linus Torvalds
+                  — {quote.author}
                 </div>
               </div>
             </div>
