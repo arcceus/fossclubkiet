@@ -1,0 +1,16 @@
+{
+  "id": "paper-reading",
+  "title": "Monthly Research Paper Reading Circle",
+  "category": "Research Group",
+  "categoryColor": "text-[#194569] dark:text-[#7bb0e0]",
+  "author": "Systems Architecture Group",
+  "date": "August 15, 2026",
+  "venueOrDetails": "Cadence: Monthly • Announced via Discord #paper-reading",
+  "content": [
+    "Our monthly reading circle gathers to dissect seminal research papers in operating systems, distributed consensus algorithms (Raft, Paxos), kernel tracing with eBPF, and cryptographic protocols.",
+    "Dates and paper selections are posted in advance on our Discord server. Anyone interested in presenting or discussing a paper is welcome to propose one in the #paper-reading channel."
+  ],
+  "actionText": "[Discuss in Discord #paper-reading →]",
+  "actionView": "discord",
+  "order": 3
+}

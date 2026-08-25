@@ -1,0 +1,16 @@
+{
+  "id": "sync",
+  "title": "Weekly Club Sync Every Friday at 5:00 PM in Room H808",
+  "category": "Club Notice & General Sync",
+  "categoryColor": "text-[#8a1f11] dark:text-[#ff7777]",
+  "author": "Arun 'devzero' Patel",
+  "date": "August 22, 2026",
+  "venueOrDetails": "Venue: H808, CSE-AI / AI&ML Dept",
+  "content": [
+    "Welcome to all new and returning members of FOSS Club KIET! Our primary weekly meeting takes place every Friday at 5:00 PM in Room H808 (CSE-AI / AI&ML Department). During these sessions, members share lightning talks on recent open source discoveries, review pull requests, and plan upcoming project sprints.",
+    "Additionally, our space in H808 is open every single day right after your classes conclude. Drop in anytime to work, discuss or ideate."
+  ],
+  "actionText": "[View Room Schedule]",
+  "actionView": "manpage",
+  "order": 1
+}

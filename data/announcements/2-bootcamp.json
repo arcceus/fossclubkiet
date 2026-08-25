@@ -1,0 +1,16 @@
+{
+  "id": "bootcamp",
+  "title": "Linux & Open Source Bootcamp Scheduled for September 3",
+  "category": "Flagship Event Announcement",
+  "categoryColor": "text-[#1b4332] dark:text-[#52c48a]",
+  "author": "FOSS Club KIET Committee",
+  "date": "August 20, 2026",
+  "venueOrDetails": "Date: September 3, 2026 • Venue: Room H808 & Seminar Hall",
+  "content": [
+    "FOSS Club KIET is proud to announce our upcoming Linux & Open Source Bootcamp on September 3, 2026. The bootcamp is tailored to take students from complete Linux beginners to confident command-line users and upstream open-source contributors.",
+    "Topics will include dual-boot partitioning, shell scripting with bash, Git version control, GPG commit signing, and submitting clean pull requests to active repositories."
+  ],
+  "actionText": "[View Full Bootcamp Schedule & Modules →]",
+  "actionView": "bootcamp",
+  "order": 2
+}
