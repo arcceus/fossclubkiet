@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FOSS Club KIET // Weekly Edition",
-  description: "LWN-style weekly dispatch and technical Linux documentation for FOSS Club KIET.",
+  title: "FOSS Club KIET — Official Website",
+  description: "Official website of FOSS Club KIET — the free and open source software community at KIET.",
 };
 
 export default function RootLayout({
