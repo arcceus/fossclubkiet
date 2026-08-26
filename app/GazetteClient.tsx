@@ -34,6 +34,11 @@ const subscribeToThemeClass = (onChange: () => void) => {
 const getIsDark = () => document.documentElement.classList.contains("dark");
 const getServerIsDark = () => false;
 
+const CORE_MEMBERS: { name: string; email: string; discord: string }[] = [
+  { name: "Nikhil", email: "nikhil@fossclubkiet.org", discord: "badnikhil" },
+  { name: "Deepak Anand", email: "deepak@fossclubkiet.org", discord: "arcceus" },
+];
+
 export default function GazetteClient({
   initialAnnouncements,
   initialQuote,
@@ -91,21 +96,6 @@ export default function GazetteClient({
     navigator.clipboard.writeText(text);
     setCopiedBootcamp(true);
     setTimeout(() => setCopiedBootcamp(false), 2000);
-  };
-
-  const handleDownloadKeyring = () => {
-    const gpgData = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Comment: FOSS Club KIET Master Keyring 2026
-
-mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
------END PGP PUBLIC KEY BLOCK-----`;
-    const blob = new Blob([gpgData], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "fossc_kiet_keyring.asc";
-    a.click();
-    URL.revokeObjectURL(url);
   };
 
   return (
@@ -198,7 +188,7 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
                         activeView === "officers" ? "font-bold" : ""
                       }`}
                     >
-                      Officers &amp; Keyring
+                      Core Members
                     </button>
                   </li>
                   <li>
@@ -489,66 +479,36 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               </section>
             )}
 
-            {/* VIEW 4: Officers & Verified Keyring */}
+            {/* VIEW 4: Core Members */}
             {activeView === "officers" && (
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-sans font-bold">
-                  <span>OFFICERS &amp; GPG KEYRING</span>
+                  <span>CORE MEMBERS</span>
                   <span>Academic Year 2026-27</span>
                 </div>
 
                 <h2 className="text-2xl font-serif font-bold text-[#000] dark:text-[#fff] mb-2">
-                  FOSS Club KIET Maintainers &amp; Keyring
+                  Core Members
                 </h2>
                 <p className="text-xs font-sans text-[#666] dark:text-[#999] mb-4">
-                  Verified public keys for encrypting security reports and verifying commit releases.
+                  Contact details for the core members of FOSS Club KIET.
                 </p>
 
                 <div className="space-y-4 font-mono text-xs">
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Club President / Lead</span>
-                      <span className="text-xs font-normal">Discord: @lead</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: lead@fossc-kiet.org</div>
-                      <div>Key ID: <code>0x8F4A12B9C0DE4100</code></div>
-                      <div>Fingerprint: <code>9A41 02C8 B5EF 4D12 8A09 3C9E 8F4A 12B9 C0DE 4100</code></div>
-                    </div>
-                  </div>
-
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Technical &amp; Systems Lead</span>
-                      <span className="text-xs font-normal">Discord: @techlead</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: tech@fossc-kiet.org</div>
-                      <div>Key ID: <code>0x2E1160AD4B3F7792</code></div>
-                      <div>Fingerprint: <code>3F29 8B71 EA01 4C55 9D1A B230 2E11 60AD 4B3F 7792</code></div>
-                    </div>
-                  </div>
-
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Bootcamp &amp; Workshops Coordinator</span>
-                      <span className="text-xs font-normal">Discord: @workshops</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: events@fossc-kiet.org</div>
-                      <div>Key ID: <code>0xD492C18357FE204A</code></div>
-                      <div>Fingerprint: <code>7B14 C890 12DF A943 EE10 8821 D492 C183 57FE 204A</code></div>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <button
-                      onClick={handleDownloadKeyring}
-                      className="border border-[#333] dark:border-[#777] bg-[#eee] dark:bg-[#222] hover:bg-[#ddd] px-3 py-1 text-xs font-sans font-bold"
+                  {CORE_MEMBERS.map((member) => (
+                    <div
+                      key={member.email}
+                      className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]"
                     >
-                      [Export All Public Keys .ASC]
-                    </button>
-                  </div>
+                      <div className="flex justify-between font-bold text-sm mb-1">
+                        <span>{member.name}</span>
+                        <span className="text-xs font-normal">Discord: @{member.discord}</span>
+                      </div>
+                      <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
+                        <div>Email: {member.email}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
             )}
