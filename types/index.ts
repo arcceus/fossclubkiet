@@ -35,3 +35,8 @@ export interface BootcampModule {
   title: string;
   description: string;
 }
+
+export interface Quote {
+  text: string;
+  author: string;
+}

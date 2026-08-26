@@ -1,41 +1,81 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ViewId, Announcement } from "@/types";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { ViewId, Announcement, Quote } from "@/types";
+import { getQuoteForDate } from "@/lib/quotes";
+
+// Values derived from the viewer's clock are client-only. useSyncExternalStore
+// renders the server snapshot during SSR/hydration (so markup matches) and the
+// client snapshot right after, without a setState-in-effect cascade.
+// The quote's server snapshot is the `initialQuote` prop (computed by the
+// server for its own date) so the SSR HTML already shows a real quote and the
+// hydrated value is guaranteed identical to it; the client then re-checks its
+// local day and swaps only if it differs.
+const subscribeNever = () => () => {};
+const getTodayDate = () =>
+  new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+const getServerTodayDate = () => "";
+const getTodayQuote = () => getQuoteForDate(new Date());
+
+// Theme: the `dark` class on <html> is the single source of truth. Read it as
+// an external store so the mount effect and the toggle only touch the DOM.
+const subscribeToThemeClass = (onChange: () => void) => {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+};
+const getIsDark = () => document.documentElement.classList.contains("dark");
+const getServerIsDark = () => false;
+
+const CORE_MEMBERS: { name: string; email: string; discord: string; github: string }[] = [
+  { name: "Nikhil", email: "nikhil@fossclubkiet.org", discord: "badnikhil", github: "badnikhil" },
+  { name: "Deepak Anand", email: "deepak@fossclubkiet.org", discord: "arcceus", github: "arcceus" },
+];
 
 export default function GazetteClient({
   initialAnnouncements,
+  initialQuote,
 }: {
   initialAnnouncements: Announcement[];
+  initialQuote: Quote;
 }) {
   const [activeView, setActiveView] = useState<ViewId>("frontpage");
-  const [isDark, setIsDark] = useState(false);
+  const isDark = useSyncExternalStore(
+    subscribeToThemeClass,
+    getIsDark,
+    getServerIsDark
+  );
   const [copiedBootcamp, setCopiedBootcamp] = useState(false);
-  const [todayDate, setTodayDate] = useState<string>("");
+  const todayDate = useSyncExternalStore(
+    subscribeNever,
+    getTodayDate,
+    getServerTodayDate
+  );
+  const quote = useSyncExternalStore(
+    subscribeNever,
+    getTodayQuote,
+    () => initialQuote
+  );
 
   useEffect(() => {
-    const now = new Date();
-    setTodayDate(
-      now.toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })
-    );
-
     const savedTheme = localStorage.getItem("fossc_dark");
     if (
       savedTheme === "1" ||
       (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.classList.add("dark");
-      setIsDark(true);
     }
   }, []);
 
   const toggleDarkMode = () => {
     const nextDark = !isDark;
-    setIsDark(nextDark);
     if (nextDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("fossc_dark", "1");
@@ -56,21 +96,6 @@ export default function GazetteClient({
     navigator.clipboard.writeText(text);
     setCopiedBootcamp(true);
     setTimeout(() => setCopiedBootcamp(false), 2000);
-  };
-
-  const handleDownloadKeyring = () => {
-    const gpgData = `-----BEGIN PGP PUBLIC KEY BLOCK-----
-Comment: FOSS Club KIET Master Keyring 2026
-
-mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
------END PGP PUBLIC KEY BLOCK-----`;
-    const blob = new Blob([gpgData], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "fossc_kiet_keyring.asc";
-    a.click();
-    URL.revokeObjectURL(url);
   };
 
   return (
@@ -163,7 +188,7 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
                         activeView === "officers" ? "font-bold" : ""
                       }`}
                     >
-                      Officers &amp; Keyring
+                      Core Members
                     </button>
                   </li>
                   <li>
@@ -185,17 +210,17 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               <div className="lwn-sidebar-title">HOURS &amp; VENUE</div>
               <div className="lwn-sidebar-body text-xs space-y-2 font-sans">
                 <div>
-                  <strong>Daily Lab Hours:</strong>
+                  <strong>Daily Open Hours:</strong>
                   <br />
                   Everyday after classes end
                 </div>
                 <div>
-                  <strong>Weekly General Sync:</strong>
+                  <strong>Weekly Meetup:</strong>
                   <br />
                   Fridays @ 5:00 PM IST
                 </div>
                 <div>
-                  <strong>Lab Location:</strong>
+                  <strong>Club Room Location:</strong>
                   <br />
                   H808, CSE-AI / AI&amp;ML Dept, KIET
                 </div>
@@ -207,13 +232,13 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               </div>
             </div>
 
-            {/* Sidebar Box 3: Quote of the Week */}
+            {/* Sidebar Box 3: Quote of the Day */}
             <div className="lwn-sidebar-box">
-              <div className="lwn-sidebar-title">QUOTE OF THE WEEK</div>
+              <div className="lwn-sidebar-title">QUOTE OF THE DAY</div>
               <div className="lwn-sidebar-body font-serif italic text-xs">
-                &ldquo;Talk is cheap. Show me the code.&rdquo;
+                &ldquo;{quote.text}&rdquo;
                 <div className="font-sans not-italic font-bold text-right mt-1 text-[11px] text-[#555] dark:text-[#888]">
-                  — Linus Torvalds
+                  — {quote.author}
                 </div>
               </div>
             </div>
@@ -454,66 +479,45 @@ mQGNBF/9... [Verified FOSS Club KIET Officers Public Keys]
               </section>
             )}
 
-            {/* VIEW 4: Officers & Verified Keyring */}
+            {/* VIEW 4: Core Members */}
             {activeView === "officers" && (
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-sans font-bold">
-                  <span>OFFICERS &amp; GPG KEYRING</span>
+                  <span>CORE MEMBERS</span>
                   <span>Academic Year 2026-27</span>
                 </div>
 
                 <h2 className="text-2xl font-serif font-bold text-[#000] dark:text-[#fff] mb-2">
-                  FOSS Club KIET Maintainers &amp; Keyring
+                  Core Members
                 </h2>
                 <p className="text-xs font-sans text-[#666] dark:text-[#999] mb-4">
-                  Verified public keys for encrypting security reports and verifying commit releases.
+                  Contact details for the core members of FOSS Club KIET.
                 </p>
 
                 <div className="space-y-4 font-mono text-xs">
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Club President / Lead</span>
-                      <span className="text-xs font-normal">Discord: @lead</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: lead@fossc-kiet.org</div>
-                      <div>Key ID: <code>0x8F4A12B9C0DE4100</code></div>
-                      <div>Fingerprint: <code>9A41 02C8 B5EF 4D12 8A09 3C9E 8F4A 12B9 C0DE 4100</code></div>
-                    </div>
-                  </div>
-
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Technical &amp; Systems Lead</span>
-                      <span className="text-xs font-normal">Discord: @techlead</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: tech@fossc-kiet.org</div>
-                      <div>Key ID: <code>0x2E1160AD4B3F7792</code></div>
-                      <div>Fingerprint: <code>3F29 8B71 EA01 4C55 9D1A B230 2E11 60AD 4B3F 7792</code></div>
-                    </div>
-                  </div>
-
-                  <div className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                    <div className="flex justify-between font-bold text-sm mb-1">
-                      <span>Bootcamp &amp; Workshops Coordinator</span>
-                      <span className="text-xs font-normal">Discord: @workshops</span>
-                    </div>
-                    <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
-                      <div>Email: events@fossc-kiet.org</div>
-                      <div>Key ID: <code>0xD492C18357FE204A</code></div>
-                      <div>Fingerprint: <code>7B14 C890 12DF A943 EE10 8821 D492 C183 57FE 204A</code></div>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <button
-                      onClick={handleDownloadKeyring}
-                      className="border border-[#333] dark:border-[#777] bg-[#eee] dark:bg-[#222] hover:bg-[#ddd] px-3 py-1 text-xs font-sans font-bold"
+                  {CORE_MEMBERS.map((member) => (
+                    <div
+                      key={member.email}
+                      className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]"
                     >
-                      [Export All Public Keys .ASC]
-                    </button>
-                  </div>
+                      <div className="font-bold text-sm mb-1">{member.name}</div>
+                      <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
+                        <div>Discord: @{member.discord}</div>
+                        <div>
+                          GitHub:{" "}
+                          <a
+                            href={`https://github.com/${member.github}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lwn-link"
+                          >
+                            @{member.github}
+                          </a>
+                        </div>
+                        <div>Email: {member.email}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
             )}
