@@ -34,9 +34,9 @@ const subscribeToThemeClass = (onChange: () => void) => {
 const getIsDark = () => document.documentElement.classList.contains("dark");
 const getServerIsDark = () => false;
 
-const CORE_MEMBERS: { name: string; email: string; discord: string }[] = [
-  { name: "Nikhil", email: "nikhil@fossclubkiet.org", discord: "badnikhil" },
-  { name: "Deepak Anand", email: "deepak@fossclubkiet.org", discord: "arcceus" },
+const CORE_MEMBERS: { name: string; email: string; discord: string; github: string }[] = [
+  { name: "Nikhil", email: "nikhil@fossclubkiet.org", discord: "badnikhil", github: "badnikhil" },
+  { name: "Deepak Anand", email: "deepak@fossclubkiet.org", discord: "arcceus", github: "arcceus" },
 ];
 
 export default function GazetteClient({
@@ -500,11 +500,20 @@ export default function GazetteClient({
                       key={member.email}
                       className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]"
                     >
-                      <div className="flex justify-between font-bold text-sm mb-1">
-                        <span>{member.name}</span>
-                        <span className="text-xs font-normal">Discord: @{member.discord}</span>
-                      </div>
+                      <div className="font-bold text-sm mb-1">{member.name}</div>
                       <div className="text-[#555] dark:text-[#aaa] space-y-0.5 text-xs">
+                        <div>Discord: @{member.discord}</div>
+                        <div>
+                          GitHub:{" "}
+                          <a
+                            href={`https://github.com/${member.github}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lwn-link"
+                          >
+                            @{member.github}
+                          </a>
+                        </div>
                         <div>Email: {member.email}</div>
                       </div>
                     </div>
