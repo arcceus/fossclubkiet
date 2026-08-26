@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { ViewId, Announcement } from "@/types";
+import { ViewId, Announcement, Quote } from "@/types";
 import { getQuoteForDate } from "@/lib/quotes";
-import { DEFAULT_QUOTE } from "@/data/quotes";
 
 // Values derived from the viewer's clock are client-only. useSyncExternalStore
 // renders the server snapshot during SSR/hydration (so markup matches) and the
 // client snapshot right after, without a setState-in-effect cascade.
+// The quote's server snapshot is the `initialQuote` prop (computed by the
+// server for its own date) so the SSR HTML already shows a real quote and the
+// hydrated value is guaranteed identical to it; the client then re-checks its
+// local day and swaps only if it differs.
 const subscribeNever = () => () => {};
 const getTodayDate = () =>
   new Date().toLocaleDateString("en-US", {
@@ -17,7 +20,6 @@ const getTodayDate = () =>
   });
 const getServerTodayDate = () => "";
 const getTodayQuote = () => getQuoteForDate(new Date());
-const getServerQuote = () => DEFAULT_QUOTE;
 
 // Theme: the `dark` class on <html> is the single source of truth. Read it as
 // an external store so the mount effect and the toggle only touch the DOM.
@@ -34,8 +36,10 @@ const getServerIsDark = () => false;
 
 export default function GazetteClient({
   initialAnnouncements,
+  initialQuote,
 }: {
   initialAnnouncements: Announcement[];
+  initialQuote: Quote;
 }) {
   const [activeView, setActiveView] = useState<ViewId>("frontpage");
   const isDark = useSyncExternalStore(
@@ -52,7 +56,7 @@ export default function GazetteClient({
   const quote = useSyncExternalStore(
     subscribeNever,
     getTodayQuote,
-    getServerQuote
+    () => initialQuote
   );
 
   useEffect(() => {
