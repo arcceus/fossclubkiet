@@ -92,7 +92,7 @@ export default function GazetteClient({
 
   const handleCopyBootcamp = () => {
     const text =
-      "Linux & Open Source Bootcamp by FOSS Club KIET\nDate: September 3, 2026\nVenue: Room H808 & Seminar Hall, KIET\nCurriculum: Linux Dual-boot, Shell Fluency, Git & Upstream Pull Requests\nDiscord: https://discord.gg/JK272Ef8Pm";
+      "Linux Basics & Open-Source History Bootcamp by FOSS CLUB KIET\nDate: September 9, 2026\nVenue: Room H106, KIET\nCurriculum: Linux Fundamentals, Open-Source History, Browser-based Linux Quest\nDiscord: https://discord.gg/JK272Ef8Pm";
     navigator.clipboard.writeText(text);
     setCopiedBootcamp(true);
     setTimeout(() => setCopiedBootcamp(false), 2000);
@@ -313,26 +313,26 @@ export default function GazetteClient({
             )}
 
             {/* VIEW 2: Bootcamp Details */}
-            {activeView === "bootcamp" && (
+{activeView === "bootcamp" && (
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-sans">
                   <span className="font-bold uppercase tracking-wider">
-                    Event Dossier // Linux &amp; Open Source Bootcamp
+                    Event Dossier // Linux Basics &amp; Open-Source History Bootcamp
                   </span>
-                  <span>September 3, 2026</span>
+                  <span>September 9, 2026</span>
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#000] dark:text-[#fff] mb-2">
-                  Linux &amp; Open Source Bootcamp (September 3)
+                  Linux Basics &amp; Open-Source History Bootcamp (September 9)
                 </h2>
                 <div className="text-xs font-sans text-[#666] dark:text-[#999] mb-4 pb-2 border-b border-[#ccc] dark:border-[#333]">
-                  Venue: <strong>FOSS Club Lab (H808) &amp; Seminar Hall</strong> • Date:{" "}
-                  <strong>September 3, 2026</strong>
+                  Venue: <strong>Room H106, KIET</strong> • Date:{" "}
+                  <strong>September 9, 2026 (17:00 – 20:30)</strong>
                 </div>
 
                 <div className="font-serif text-[15px] leading-relaxed text-[#222] dark:text-[#ddd] space-y-4 mb-6">
                   <p>
-                    This full-day hands-on workshop is tailored for KIET students looking to transition to Linux, master Git version control, and start contributing to real-world open source projects.
+                    A beginner-friendly session where you won&apos;t just learn Linux, you&apos;ll play it. Explore an abandoned system in our browser adventure, uncover hidden files, unlock gates, and learn how to start contributing to open source this semester.
                   </p>
 
                   <h3 className="font-serif font-bold text-lg text-[#000] dark:text-[#fff] border-b border-[#ddd] dark:border-[#333] pb-1 mt-4">
@@ -342,44 +342,38 @@ export default function GazetteClient({
                   <div className="space-y-3 font-sans text-xs">
                     <div className="border border-[#ccc] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
                       <div className="font-bold text-sm text-[#000] dark:text-[#fff]">
-                        Module 1: Linux Architecture &amp; Live Installation Clinic
+                        Module 1: Linux Fundamentals
                       </div>
                       <div className="text-[#555] dark:text-[#aaa] mt-1">
-                        Dual-boot partitioning, UEFI vs BIOS, filesystem hierarchy (/etc, /var, /home), and distro selection (Debian, Arch, Fedora, Ubuntu).
+                        Core CLI navigation, filesystem hierarchy exploration, and essential command-line utilities.
                       </div>
                     </div>
 
                     <div className="border border-[#ccc] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
                       <div className="font-bold text-sm text-[#000] dark:text-[#fff]">
-                        Module 2: Shell Fluency &amp; Essential Utilities
+                        Module 2: Open-Source History
                       </div>
                       <div className="text-[#555] dark:text-[#aaa] mt-1">
-                        Navigating bash/zsh, piped commands (|), grep, sed, awk, file permissions (chmod/chown), and package managers.
+                        The evolution of FOSS culture, open collaboration philosophy, and community onboarding for the semester.
                       </div>
                     </div>
 
                     <div className="border border-[#ccc] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
                       <div className="font-bold text-sm text-[#000] dark:text-[#fff]">
-                        Module 3: Git Version Control &amp; Open Source Etiquette
+                        Module 3: Browser-based Linux Quest
                       </div>
                       <div className="text-[#555] dark:text-[#aaa] mt-1">
-                        Branching models, resolving merge conflicts, GPG commit signing, and submitting clean Pull Requests to public repositories.
-                      </div>
-                    </div>
-
-                    <div className="border border-[#ccc] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]">
-                      <div className="font-bold text-sm text-[#000] dark:text-[#fff]">
-                        Module 4: Making Your First Upstream Open Source PR
-                      </div>
-                      <div className="text-[#555] dark:text-[#aaa] mt-1">
-                        Finding &ldquo;Good First Issues&rdquo;, reading documentation, writing reproducible issues, and collaborating with maintainers.
+                        A browser-based terminal puzzle adventure: explore an abandoned system, spot misleading clues, unlock gates, and mint a completion certificate.
                       </div>
                     </div>
                   </div>
 
                   <div className="border border-[#333] dark:border-[#666] p-3 bg-[#f6f6f4] dark:bg-[#181818] font-sans text-xs">
-                    <strong>Prerequisites:</strong> Bring your laptop (any OS) + a 16GB USB flash drive if you want to install Linux on bare metal.
+                    <strong>Prerequisites:</strong> Absolute beginners welcome. Bring a laptop with a modern web browser and a Google account. Nothing to install.
                   </div>
+                </div>
+              </section>
+            )}
 
                   <div className="pt-2">
                     <button
@@ -422,7 +416,7 @@ export default function GazetteClient({
                   <div>
                     <div className="font-bold uppercase underline mb-1">DESCRIPTION</div>
                     <div className="pl-4 font-serif text-[14px] leading-relaxed">
-                      <strong>FOSS Club KIET</strong> is the student-led software freedom collective at KIET Group of Institutions. We run open labs in <strong>Room H808</strong> every day after class hours conclude.
+                      <strong>FOSS Club KIET</strong> is the student-led software freedom collective at KIET Deemed To Be University. We run open labs in <strong>Room H808</strong> every day after class hours conclude.
                     </div>
                   </div>
 
