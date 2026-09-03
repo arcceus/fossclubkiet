@@ -92,7 +92,7 @@ export default function GazetteClient({
 
   const handleCopyBootcamp = () => {
     const text =
-      "Linux & Open Source Bootcamp by FOSS Club KIET\nDate: September 3, 2026\nVenue: Room H808 & Seminar Hall, KIET\nCurriculum: Linux Dual-boot, Shell Fluency, Git & Upstream Pull Requests\nDiscord: https://discord.gg/JK272Ef8Pm";
+      "Linux Basics & Open-Source History Bootcamp by FOSS CLUB KIET\nDate: September 9, 2026\nVenue: Room H106, KIET\nCurriculum: Linux Fundamentals, Open-Source History, Browser-based Linux Quest\nDiscord: https://discord.gg/JK272Ef8Pm";
     navigator.clipboard.writeText(text);
     setCopiedBootcamp(true);
     setTimeout(() => setCopiedBootcamp(false), 2000);
