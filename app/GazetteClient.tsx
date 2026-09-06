@@ -178,7 +178,7 @@ export default function GazetteClient({
                         activeView === "bootcamp" ? "font-bold" : ""
                       }`}
                     >
-                      <strong>Bootcamp (Sep 3)</strong>
+                      <strong>Bootcamp (Sep 9)</strong>
                     </button>
                   </li>
                   <li>
@@ -212,17 +212,17 @@ export default function GazetteClient({
                 <div>
                   <strong>Daily Open Hours:</strong>
                   <br />
-                  Everyday after classes end
+                  Everyday after classes (Room H808 or H108, confirm on Discord once temporarily)
                 </div>
                 <div>
                   <strong>Weekly Meetup:</strong>
                   <br />
-                  Fridays @ 5:00 PM IST
+                  Tuesdays @ 5:00 PM IST
                 </div>
                 <div>
                   <strong>Club Room Location:</strong>
                   <br />
-                  H808, CSE-AI / AI&amp;ML Dept, KIET
+                  Room H808 or H108 (confirm on Discord once temporarily), CSE-AI / AI&amp;ML Dept, KIET
                 </div>
                 <div>
                   <strong>Paper Reading:</strong>
@@ -287,7 +287,12 @@ export default function GazetteClient({
                       {item.title}
                     </h2>
                     <div className="text-xs font-sans text-[#666] dark:text-[#999] mb-3">
-                      [{item.date}] By <strong>{item.author}</strong>
+                      [{item.date}]
+                      {item.author ? (
+                        <>
+                          {" "}By <strong>{item.author}</strong>
+                        </>
+                      ) : null}
                       {item.venueOrDetails ? ` • ${item.venueOrDetails}` : ""}
                     </div>
 
@@ -313,7 +318,7 @@ export default function GazetteClient({
             )}
 
             {/* VIEW 2: Bootcamp Details */}
-{activeView === "bootcamp" && (
+            {activeView === "bootcamp" && (
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-sans">
                   <span className="font-bold uppercase tracking-wider">
@@ -327,7 +332,7 @@ export default function GazetteClient({
                 </h2>
                 <div className="text-xs font-sans text-[#666] dark:text-[#999] mb-4 pb-2 border-b border-[#ccc] dark:border-[#333]">
                   Venue: <strong>Room H106, KIET</strong> • Date:{" "}
-                  <strong>September 9, 2026 (17:00 – 20:30)</strong>
+                  <strong>September 9, 2026 (17:00 - 20:30)</strong>
                 </div>
 
                 <div className="font-serif text-[15px] leading-relaxed text-[#222] dark:text-[#ddd] space-y-4 mb-6">
@@ -371,9 +376,6 @@ export default function GazetteClient({
                   <div className="border border-[#333] dark:border-[#666] p-3 bg-[#f6f6f4] dark:bg-[#181818] font-sans text-xs">
                     <strong>Prerequisites:</strong> Absolute beginners welcome. Bring a laptop with a modern web browser and a Google account. Nothing to install.
                   </div>
-                </div>
-              </section>
-            )}
 
                   <div className="pt-2">
                     <button
@@ -409,14 +411,14 @@ export default function GazetteClient({
                   <div>
                     <div className="font-bold uppercase underline mb-1">SYNOPSIS</div>
                     <div className="pl-4 bg-[#eee] dark:bg-[#222] p-2 border-l-2 border-[#333] dark:border-[#888]">
-                      <strong>fossc</strong> [<strong>--discord</strong>] [<strong>--bootcamp</strong>] [<strong>--meeting</strong> <em>friday-5pm</em>] [<strong>--research-paper</strong>] [<em>command</em>]
+                      <strong>fossc</strong> [<strong>--discord</strong>] [<strong>--bootcamp</strong>] [<strong>--meeting</strong> <em>tuesday-5pm</em>] [<strong>--research-paper</strong>] [<em>command</em>]
                     </div>
                   </div>
 
                   <div>
                     <div className="font-bold uppercase underline mb-1">DESCRIPTION</div>
                     <div className="pl-4 font-serif text-[14px] leading-relaxed">
-                      <strong>FOSS Club KIET</strong> is the student-led software freedom collective at KIET Deemed To Be University. We run open labs in <strong>Room H808</strong> every day after class hours conclude.
+                      <strong>FOSS Club KIET</strong> is the student-led software freedom collective at KIET Deemed To Be University. We run open labs in <strong>Room H808 or H108</strong> (confirm on Discord once temporarily) every day after class hours conclude.
                     </div>
                   </div>
 
@@ -435,11 +437,11 @@ export default function GazetteClient({
                           <tr className="border-b border-[#ccc] dark:border-[#444]">
                             <td className="p-1.5 border border-[#888] font-bold">Daily Hours</td>
                             <td className="p-1.5 border border-[#888]">Everyday after classes</td>
-                            <td className="p-1.5 border border-[#888]">Room H808, CSE-AI Dept</td>
+                            <td className="p-1.5 border border-[#888]">Room H808 or H108 (confirm on Discord once temporarily)</td>
                           </tr>
                           <tr className="border-b border-[#ccc] dark:border-[#444] bg-[#f5f5f5] dark:bg-[#181818]">
                             <td className="p-1.5 border border-[#888] font-bold">Weekly Sync</td>
-                            <td className="p-1.5 border border-[#888]">Every Friday @ 5:00 PM</td>
+                            <td className="p-1.5 border border-[#888]">Every Tuesday @ 5:00 PM</td>
                             <td className="p-1.5 border border-[#888]">General meetings &amp; lightning talks</td>
                           </tr>
                           <tr>
@@ -466,7 +468,7 @@ export default function GazetteClient({
                           https://discord.gg/JK272Ef8Pm
                         </a>
                       </div>
-                      <div>Venue: Room H808, CSE-AI / AI&amp;ML Dept, KIET</div>
+                      <div>Venue: Room H808 or H108 (confirm on Discord once temporarily), CSE-AI / AI&amp;ML Dept, KIET</div>
                     </div>
                   </div>
                 </div>

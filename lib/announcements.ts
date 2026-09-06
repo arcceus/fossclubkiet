@@ -27,7 +27,7 @@ export function getAnnouncements(): Announcement[] {
           category: String(parsed.category || "Club Notice"),
           categoryColor:
             parsed.categoryColor || "text-[#8a1f11] dark:text-[#ff7777]",
-          author: String(parsed.author || "FOSS Club KIET"),
+          author: parsed.author ? String(parsed.author) : undefined,
           date: String(parsed.date || "2026"),
           venueOrDetails: parsed.venueOrDetails || undefined,
           content: Array.isArray(parsed.content)

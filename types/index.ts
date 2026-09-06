@@ -11,7 +11,7 @@ export interface Announcement {
   title: string;
   category: string;
   categoryColor: string;
-  author: string;
+  author?: string;
   date: string;
   venueOrDetails?: string;
   content: string[];
