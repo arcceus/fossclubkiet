@@ -102,7 +102,7 @@ export default function GazetteClient({
   return (
     <div className="bg-[#ffffff] dark:bg-[#0e0e0e] text-[#111111] dark:text-[#e0e0e0] min-h-screen">
       <div className="max-w-[1200px] mx-auto px-3 sm:px-6">
-        
+
         {/* LWN Classic Masthead Banner */}
         <header className="sticky top-0 z-30 bg-[#ffffff] dark:bg-[#0e0e0e] pt-4 pb-2 mb-4 border-b-2 border-[#333333] dark:border-[#666666]">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
@@ -133,10 +133,10 @@ export default function GazetteClient({
 
         {/* Main LWN 2-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-[210px_1fr] gap-6 items-start pb-8">
-          
+
           {/* LEFT SIDEBAR: LWN Navigation & Tickers */}
           <aside className="w-full md:sticky md:top-[100px] self-start">
-            
+
             {/* Sidebar Box 1: Club Navigation */}
             <div className="lwn-sidebar-box">
               <div className="lwn-sidebar-title">FOSS CLUB KIET</div>
@@ -145,9 +145,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("frontpage")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "frontpage" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "frontpage" ? "font-bold" : ""
+                        }`}
                     >
                       Front page
                     </button>
@@ -155,9 +154,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("weekly")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "weekly" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "weekly" ? "font-bold" : ""
+                        }`}
                     >
                       Weekly edition
                     </button>
@@ -165,9 +163,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("manpage")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "manpage" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "manpage" ? "font-bold" : ""
+                        }`}
                     >
                       man fossc(1)
                     </button>
@@ -175,9 +172,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("bootcamp")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "bootcamp" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "bootcamp" ? "font-bold" : ""
+                        }`}
                     >
                       <strong>Bootcamp (Sep 9)</strong>
                     </button>
@@ -185,9 +181,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("officers")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "officers" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "officers" ? "font-bold" : ""
+                        }`}
                     >
                       Members
                     </button>
@@ -195,9 +190,8 @@ export default function GazetteClient({
                   <li>
                     <button
                       onClick={() => handleNav("discord")}
-                      className={`lwn-link text-left w-full ${
-                        activeView === "discord" ? "font-bold" : ""
-                      }`}
+                      className={`lwn-link text-left w-full ${activeView === "discord" ? "font-bold" : ""
+                        }`}
                     >
                       Discord Community
                     </button>
@@ -259,7 +253,7 @@ export default function GazetteClient({
 
           {/* RIGHT MAIN STAGE: LWN Editorial Articles & Views */}
           <main className="w-full min-w-0">
-            
+
             {/* VIEW 1: Front Page & Weekly Edition */}
             {(activeView === "frontpage" || activeView === "weekly") && (
               <section className="lwn-view">
