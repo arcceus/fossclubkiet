@@ -34,9 +34,10 @@ const subscribeToThemeClass = (onChange: () => void) => {
 const getIsDark = () => document.documentElement.classList.contains("dark");
 const getServerIsDark = () => false;
 
-const CORE_MEMBERS: { name: string; email: string; discord: string; github: string }[] = [
-  { name: "Nikhil", email: "nikhil@fossclubkiet.org", discord: "badnikhil", github: "badnikhil" },
-  { name: "Deepak Anand", email: "deepak@fossclubkiet.org", discord: "arcceus", github: "arcceus" },
+const MEMBERS: { name: string; discord: string; github: string }[] = [
+  { name: "Deepak Anand", discord: "arcceus", github: "arcceus" },
+  { name: "Vansh Sahay", discord: "vansh_sahay", github: "VanshSahay"},
+  { name: "Nikhil", discord: "badnikhil", github: "badnikhil" },
 ];
 
 export default function GazetteClient({
@@ -188,7 +189,7 @@ export default function GazetteClient({
                         activeView === "officers" ? "font-bold" : ""
                       }`}
                     >
-                      Core Members
+                      Members
                     </button>
                   </li>
                   <li>
@@ -475,25 +476,25 @@ export default function GazetteClient({
               </section>
             )}
 
-            {/* VIEW 4: Core Members */}
+            {/* VIEW 4: Members */}
             {activeView === "officers" && (
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-sans font-bold">
-                  <span>CORE MEMBERS</span>
+                  <span>MEMBERS</span>
                   <span>Academic Year 2026-27</span>
                 </div>
 
                 <h2 className="text-2xl font-serif font-bold text-[#000] dark:text-[#fff] mb-2">
-                  Core Members
+                  Members
                 </h2>
                 <p className="text-xs font-sans text-[#666] dark:text-[#999] mb-4">
-                  Contact details for the core members of FOSS Club KIET.
+                  Details for the members of FOSS Club KIET.
                 </p>
 
                 <div className="space-y-4 font-mono text-xs">
-                  {CORE_MEMBERS.map((member) => (
+                  {MEMBERS.map((member) => (
                     <div
-                      key={member.email}
+                      key={member.github}
                       className="border border-[#999] dark:border-[#444] p-3 bg-[#fdfdfc] dark:bg-[#161616]"
                     >
                       <div className="font-bold text-sm mb-1">{member.name}</div>
@@ -510,7 +511,6 @@ export default function GazetteClient({
                             @{member.github}
                           </a>
                         </div>
-                        <div>Email: {member.email}</div>
                       </div>
                     </div>
                   ))}
