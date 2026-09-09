@@ -547,36 +547,6 @@ export default function GazetteClient({
                     discord.gg/JK272Ef8Pm ↗
                   </a>
                 </div>
-
-                <h3 className="font-serif font-bold text-base mb-2 border-b border-[#ddd] dark:border-[#333] pb-1">
-                  Server Channels
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs">
-                  <div className="border border-[#ccc] dark:border-[#444] p-2.5">
-                    <strong>#announcements</strong>
-                    <div className="text-[#666] dark:text-[#aaa] text-[11px] mt-0.5">
-                      Official notifications and room schedules.
-                    </div>
-                  </div>
-                  <div className="border border-[#ccc] dark:border-[#444] p-2.5">
-                    <strong>#linux-help-desk</strong>
-                    <div className="text-[#666] dark:text-[#aaa] text-[11px] mt-0.5">
-                      Dual boot, driver, and kernel assistance.
-                    </div>
-                  </div>
-                  <div className="border border-[#ccc] dark:border-[#444] p-2.5">
-                    <strong>#paper-reading</strong>
-                    <div className="text-[#666] dark:text-[#aaa] text-[11px] mt-0.5">
-                      Monthly research paper circle.
-                    </div>
-                  </div>
-                  <div className="border border-[#ccc] dark:border-[#444] p-2.5">
-                    <strong>#project-showcase</strong>
-                    <div className="text-[#666] dark:text-[#aaa] text-[11px] mt-0.5">
-                      Share repositories and pull requests.
-                    </div>
-                  </div>
-                </div>
               </section>
             )}
 
