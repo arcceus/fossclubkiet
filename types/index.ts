@@ -9,14 +9,12 @@ export type ViewId =
 export interface Announcement {
   id: string;
   title: string;
-  category: string;
-  categoryColor: string;
-  author?: string;
   date: string;
   venueOrDetails?: string;
   content: string[];
   actionText?: string;
   actionView?: ViewId;
+  actionUrl?: string;
   order?: number;
 }
 

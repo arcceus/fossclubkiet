@@ -1,15 +1,13 @@
 {
   "id": "paper-reading",
   "title": "Monthly Research Paper Reading Circle",
-  "category": "Research Group",
-  "categoryColor": "text-[#194569] dark:text-[#7bb0e0]",
   "date": "August 15, 2026",
-  "venueOrDetails": "Cadence: Monthly • Announced via Discord #paper-reading",
+  "venueOrDetails": "Discussion on Discord #plans-and-projects ",
   "content": [
-    "Our monthly reading circle gathers to dissect seminal research papers in operating systems, distributed consensus algorithms (Raft, Paxos), kernel tracing with eBPF, and cryptographic protocols.",
-    "Dates and paper selections are posted in advance on our Discord server. Anyone interested in presenting or discussing a paper is welcome to propose one in the #paper-reading channel."
+    "Our monthly reading circle gathers to dissect seminal research papers across computer science.",
+    "Dates and paper selections are posted in advance on our Discord server. Anyone interested in presenting or discussing a paper is welcome to propose one in the #plans-and-projects channel."
   ],
-  "actionText": "[Discuss in Discord #paper-reading →]",
+  "actionText": "[Discuss in Discord #plans-and-projects →]",
   "actionView": "discord",
   "order": 3
 }

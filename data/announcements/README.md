@@ -11,9 +11,6 @@ Use a number prefix or slug, e.g. `4-hackathon-2026.json`.
 {
   "id": "unique-slug",
   "title": "Headline of the announcement",
-  "category": "Club Notice & General Sync | Flagship Event Announcement | Research Group | Workshop & Tutorial",
-  "categoryColor": "text-[#8a1f11] dark:text-[#ff7777]",
-  "author": "Author Name / Role",
   "date": "August 25, 2026",
   "venueOrDetails": "Venue: Room H808, CSE-AI Dept",
   "content": [
@@ -22,18 +19,17 @@ Use a number prefix or slug, e.g. `4-hackathon-2026.json`.
   ],
   "actionText": "[Optional link button text]",
   "actionView": "frontpage | bootcamp | manpage | officers | discord",
+  "actionUrl": "https://example.com/optional-external-url",
   "order": 4
 }
 ```
 
 - **id**: Unique string identifier.
 - **title**: Heading displayed in the gazette.
-- **category**: Category label.
-- **categoryColor**: Optional Tailwind color class (defaults to burgundy if omitted).
-- **author**: Author name or club officer handle.
 - **date**: Date string (e.g. "August 25, 2026").
 - **venueOrDetails**: Optional venue, cadence, or location snippet.
 - **content**: Array of paragraph strings.
 - **actionText**: Optional text for the bottom action button.
 - **actionView**: Optional internal tab target when clicking the action button.
+- **actionUrl**: Optional external link URL (opens in new tab).
 - **order**: Optional integer for custom ordering (lowest number appears first).

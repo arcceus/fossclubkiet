@@ -24,10 +24,6 @@ export function getAnnouncements(): Announcement[] {
         announcements.push({
           id: String(parsed.id),
           title: String(parsed.title),
-          category: String(parsed.category || "Club Notice"),
-          categoryColor:
-            parsed.categoryColor || "text-[#8a1f11] dark:text-[#ff7777]",
-          author: parsed.author ? String(parsed.author) : undefined,
           date: String(parsed.date || "2026"),
           venueOrDetails: parsed.venueOrDetails || undefined,
           content: Array.isArray(parsed.content)
@@ -35,6 +31,7 @@ export function getAnnouncements(): Announcement[] {
             : [String(parsed.content || "")],
           actionText: parsed.actionText || undefined,
           actionView: parsed.actionView || undefined,
+          actionUrl: parsed.actionUrl || undefined,
           order: typeof parsed.order === "number" ? parsed.order : 999,
         });
       }

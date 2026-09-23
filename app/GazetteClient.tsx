@@ -36,8 +36,9 @@ const getServerIsDark = () => false;
 
 const MEMBERS: { name: string; discord: string; github: string }[] = [
   { name: "Deepak Anand", discord: "arcceus", github: "arcceus" },
-  { name: "Vansh Sahay", discord: "vansh_sahay", github: "VanshSahay"},
+  { name: "Vansh Sahay", discord: "vansh_sahay", github: "VanshSahay" },
   { name: "Nikhil", discord: "badnikhil", github: "badnikhil" },
+  { name: "Aiman Singh", discord: "aiman04642", github: "ai-man-codes" },
 ];
 
 export default function GazetteClient({
@@ -151,15 +152,18 @@ export default function GazetteClient({
                       Front page
                     </button>
                   </li>
+
                   <li>
-                    <button
-                      onClick={() => handleNav("weekly")}
-                      className={`lwn-link text-left w-full ${activeView === "weekly" ? "font-bold" : ""
-                        }`}
+                    <a
+                      href="https://dour-flavor-be8.notion.site/3f07bdec119682f99724815017133229"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="lwn-link text-left w-full block"
                     >
-                      Weekly edition
-                    </button>
+                      <strong>Recruitment (Live) ↗</strong>
+                    </a>
                   </li>
+
                   <li>
                     <button
                       onClick={() => handleNav("manpage")}
@@ -167,15 +171,6 @@ export default function GazetteClient({
                         }`}
                     >
                       man fossc(1)
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNav("bootcamp")}
-                      className={`lwn-link text-left w-full ${activeView === "bootcamp" ? "font-bold" : ""
-                        }`}
-                    >
-                      <strong>Bootcamp (Sep 9)</strong>
                     </button>
                   </li>
                   <li>
@@ -207,7 +202,7 @@ export default function GazetteClient({
                 <div>
                   <strong>Daily Open Hours:</strong>
                   <br />
-                  Everyday after classes (Room H808 or H108, confirm on Discord once temporarily)
+                  Everyday after classes
                 </div>
                 <div>
                   <strong>Weekly Meetup:</strong>
@@ -217,7 +212,7 @@ export default function GazetteClient({
                 <div>
                   <strong>Club Room Location:</strong>
                   <br />
-                  Room H808 or H108 (confirm on Discord once temporarily), CSE-AI / AI&amp;ML Dept, KIET
+                  Room H808 or H108 (confirm on Discord once temporarily)
                 </div>
                 <div>
                   <strong>Paper Reading:</strong>
@@ -273,21 +268,11 @@ export default function GazetteClient({
                 {/* Render All JSON Announcements */}
                 {initialAnnouncements.map((item) => (
                   <article key={item.id} className="lwn-article-box">
-                    <div
-                      className={`text-xs font-sans font-bold uppercase mb-1 ${item.categoryColor}`}
-                    >
-                      {item.category}
-                    </div>
                     <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#000] dark:text-[#fff] mb-1.5 leading-snug">
                       {item.title}
                     </h2>
                     <div className="text-xs font-sans text-[#666] dark:text-[#999] mb-3">
                       [{item.date}]
-                      {item.author ? (
-                        <>
-                          {" "}By <strong>{item.author}</strong>
-                        </>
-                      ) : null}
                       {item.venueOrDetails ? ` • ${item.venueOrDetails}` : ""}
                     </div>
 
@@ -297,14 +282,25 @@ export default function GazetteClient({
                       ))}
                     </div>
 
-                    {item.actionText && item.actionView && (
+                    {item.actionText && (item.actionUrl || item.actionView) && (
                       <div className="mt-3 text-xs font-sans">
-                        <button
-                          onClick={() => handleNav(item.actionView!)}
-                          className="lwn-link font-bold text-left"
-                        >
-                          {item.actionText}
-                        </button>
+                        {item.actionUrl ? (
+                          <a
+                            href={item.actionUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lwn-link font-bold text-left inline-block"
+                          >
+                            {item.actionText}
+                          </a>
+                        ) : (
+                          <button
+                            onClick={() => handleNav(item.actionView!)}
+                            className="lwn-link font-bold text-left"
+                          >
+                            {item.actionText}
+                          </button>
+                        )}
                       </div>
                     )}
                   </article>
@@ -391,8 +387,6 @@ export default function GazetteClient({
               <section className="lwn-view">
                 <div className="bg-[#f0ede6] dark:bg-[#1a1a1a] border-y border-[#333] dark:border-[#555] px-3 py-1 mb-4 flex justify-between items-center text-xs font-mono font-bold">
                   <span>FOSSC(1)</span>
-                  <span>Linux Reference Manual</span>
-                  <span>FOSSC(1)</span>
                 </div>
 
                 <div className="font-mono text-xs sm:text-[13px] leading-relaxed space-y-4 bg-[#fdfdfc] dark:bg-[#111] border border-[#ccc] dark:border-[#333] p-4 sm:p-6">
@@ -442,7 +436,7 @@ export default function GazetteClient({
                           <tr>
                             <td className="p-1.5 border border-[#888] font-bold">Paper Group</td>
                             <td className="p-1.5 border border-[#888]">Monthly</td>
-                            <td className="p-1.5 border border-[#888]">Systems &amp; architecture review</td>
+                            <td className="p-1.5 border border-[#888]">Research papers across computer science</td>
                           </tr>
                         </tbody>
                       </table>
