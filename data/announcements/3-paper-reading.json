@@ -1,11 +1,14 @@
 {
   "id": "paper-reading",
   "title": "Monthly Research Paper Reading Circle",
-  "date": "August 15, 2026",
-  "venueOrDetails": "Discussion on Discord #plans-and-projects ",
+  "date": "September 30, 2026",
+  "venueOrDetails": "Date: Thursday, October 1, 2026 (5:15 PM onwards) • Venue: AI Skills Lab",
   "content": [
-    "Our monthly reading circle gathers to dissect seminal research papers across computer science.",
-    "Dates and paper selections are posted in advance on our Discord server. Anyone interested in presenting or discussing a paper is welcome to propose one in the #plans-and-projects channel."
+    "Our monthly reading circle gathers to dissect seminal research papers across computer science. Our next session is scheduled for Thursday, October 1, 2026, starting at 5:15 PM onwards in the AI Skills Lab.",
+    "We will be discussing two landmark systems papers:",
+    "1. \"Architecture of a Database System\" by Joseph M. Hellerstein, Michael Stonebraker, and James Hamilton (2007) — an architectural exploration of modern relational database management systems, covering storage engines, query processors, and transaction managers.",
+    "2. \"Dynamo: Amazon's Highly Available Key-value Store\" by Giuseppe DeCandia et al. (2007) — the seminal distributed systems paper introducing consistent hashing, vector clocks, sloppy quorums, and anti-entropy for high-availability distributed storage.",
+    "All students and enthusiasts interested in databases, distributed systems, and open technical discussions are welcome to attend. Further discussion and paper links are available on our Discord server in the #plans-and-projects channel."
   ],
   "actionText": "[Discuss in Discord #plans-and-projects →]",
   "actionView": "discord",
