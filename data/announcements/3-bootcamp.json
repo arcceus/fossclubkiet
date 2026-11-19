@@ -1,13 +1,14 @@
 {
   "id": "bootcamp",
-  "title": "Linux Basics & Open-Source History Bootcamp Scheduled for September 9",
   "date": "August 20, 2026",
-  "venueOrDetails": "Date: September 9, 2026 (17:00 - 20:30) • Venue: Room H106, KIET",
+  "order": 3,
+  "title": "Linux Basics & Open-Source History Bootcamp Scheduled for September 9",
+  "hidden": false,
   "content": [
     "FOSS Club KIET is proud to announce our upcoming Linux Basics & Open-Source History Bootcamp on September 9, 2026 (17:00 - 20:30) in Room H106, KIET. A beginner-friendly session where you won't just learn Linux, you'll play it. Explore an abandoned system in our browser adventure, uncover hidden files, unlock gates, and learn how to start contributing to open source this semester.",
     "Modules will cover Linux Fundamentals (core CLI navigation, filesystem hierarchy, and essential utilities), Open-Source History, and our browser-based Linux quest puzzle adventure. Absolute beginners welcome - bring a laptop with a modern web browser and a Google account. Nothing to install."
   ],
   "actionText": "[View Full Bootcamp Schedule & Modules →]",
   "actionView": "bootcamp",
-  "order": 2
+  "venueOrDetails": "Date: September 9, 2026 (17:00 - 20:30) • Venue: Room H106, KIET"
 }

@@ -1,8 +1,9 @@
 {
   "id": "paper-reading",
-  "title": "Monthly Research Paper Reading Circle",
   "date": "September 30, 2026",
-  "venueOrDetails": "Date: Thursday, October 1, 2026 (5:15 PM onwards) • Venue: AI Skills Lab",
+  "order": 2,
+  "title": "Monthly Research Paper Reading Circle",
+  "hidden": false,
   "content": [
     "Our monthly reading circle gathers to dissect seminal research papers across computer science. Our next session is scheduled for Thursday, October 1, 2026, starting at 5:15 PM onwards in the AI Skills Lab.",
     "We will be discussing two landmark systems papers:",
@@ -10,7 +11,7 @@
     "2. \"Dynamo: Amazon's Highly Available Key-value Store\" by Giuseppe DeCandia et al. (2007) — the seminal distributed systems paper introducing consistent hashing, vector clocks, sloppy quorums, and anti-entropy for high-availability distributed storage.",
     "All students and enthusiasts interested in databases, distributed systems, and open technical discussions are welcome to attend. Further discussion and paper links are available on our Discord server in the #plans-and-projects channel."
   ],
-  "actionText": "[Discuss in Discord #plans-and-projects →]",
-  "actionView": "discord",
-  "order": 3
+  "actionText": "[View All Monthly Paper Titles & Gists →]",
+  "actionView": "papers",
+  "venueOrDetails": "Date: Thursday, October 1, 2026 (5:15 PM onwards) • Venue: AI Skills Lab"
 }
