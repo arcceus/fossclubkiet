@@ -1,0 +1,229 @@
+{
+  "manpage": {
+    "rows": [
+      {
+        "id": "row-1",
+        "venue": "Room H808 or H108 (confirm on Discord once temporarily)",
+        "cadence": "Daily Hours",
+        "schedule": "Everyday after classes"
+      },
+      {
+        "id": "row-2",
+        "venue": "General meetings & lightning talks",
+        "cadence": "Weekly Sync",
+        "schedule": "Every Tuesday @ 5:00 PM"
+      },
+      {
+        "id": "row-3",
+        "venue": "Research papers across computer science",
+        "cadence": "Paper Group",
+        "schedule": "Monthly"
+      }
+    ],
+    "nameDesc": "fossc - FOSS Club KIET operational handbook and gateway",
+    "synopsis": "fossc [--discord] [--bootcamp] [--meeting tuesday-5pm] [--research-paper] [command]",
+    "discordUrl": "https://discord.gg/JK272Ef8Pm",
+    "description": "FOSS Club KIET is the student-led software freedom collective at KIET Deemed To Be University. We run open labs in Room H808 or H108 (confirm on Discord once temporarily) every day after class hours conclude.",
+    "venueFooter": "Room H808 or H108 (confirm on Discord once temporarily), CSE-AI / AI&ML Dept, KIET"
+  },
+  "members": {
+    "list": [
+      {
+        "id": "mem-1",
+        "name": "Deepak Anand",
+        "github": "arcceus",
+        "discord": "arcceus"
+      },
+      {
+        "id": "mem-2",
+        "name": "Vansh Sahay",
+        "github": "VanshSahay",
+        "discord": "vansh_sahay"
+      },
+      {
+        "id": "mem-3",
+        "name": "Nikhil",
+        "github": "badnikhil",
+        "discord": "badnikhil"
+      },
+      {
+        "id": "mem-4",
+        "name": "Aiman Singh",
+        "github": "ai-man-codes",
+        "discord": "aiman04642"
+      }
+    ],
+    "subtitle": "Details for the members of FOSS Club KIET.",
+    "academicYear": "Academic Year 2026-27"
+  },
+  "bootcamp": {
+    "intro": "A beginner-friendly session where you won't just learn Linux, you'll play it. Explore an abandoned system in our browser adventure, uncover hidden files, unlock gates, and learn how to start contributing to open source this semester.",
+    "title": "Linux Basics & Open-Source History Bootcamp (September 9)",
+    "venue": "Room H106, KIET",
+    "modules": [
+      {
+        "id": "mod-1",
+        "title": "Module 1: Linux Fundamentals",
+        "number": 1,
+        "description": "Core CLI navigation, filesystem hierarchy exploration, and essential command-line utilities."
+      },
+      {
+        "id": "mod-2",
+        "title": "Module 2: Open-Source History",
+        "number": 2,
+        "description": "The evolution of FOSS culture, open collaboration philosophy, and community onboarding for the semester."
+      },
+      {
+        "id": "mod-3",
+        "title": "Module 3: Browser-based Linux Quest",
+        "number": 3,
+        "description": "A browser-based terminal puzzle adventure: explore an abandoned system, spot misleading clues, unlock gates, and mint a completion certificate."
+      }
+    ],
+    "copyText": "Linux Basics & Open-Source History Bootcamp by FOSS CLUB KIET\nDate: September 9, 2026\nVenue: Room H106, KIET\nCurriculum: Linux Fundamentals, Open-Source History, Browser-based Linux Quest\nDiscord: https://discord.gg/JK272Ef8Pm",
+    "dateLabel": "September 9, 2026",
+    "bannerLabel": "Event Dossier // Linux Basics & Open-Source History Bootcamp",
+    "dateAndTime": "September 9, 2026 (17:00 - 20:30)",
+    "prerequisites": "Absolute beginners welcome. Bring a laptop with a modern web browser and a Google account. Nothing to install."
+  },
+  "masthead": {
+    "title": "FOSS Club KIET",
+    "subtitle": "Published weekly by the FOSS Club at KIET Deemed to be University • Room H808, CSE-AI/AI&ML Dept"
+  },
+  "updatedAt": "2026-11-19T13:22:32.705Z",
+  "discordHub": {
+    "title": "FOSS Club KIET Discord Community",
+    "subtitle": "Connect with 200+ fellow KIET Linux enthusiasts and developers.",
+    "cardTitle": "Join the Official Server",
+    "buttonLabel": "discord.gg/JK272Ef8Pm ↗",
+    "description": "Get immediate assistance with Linux installations, receive workshop announcements, collaborate on open source repositories, and participate in paper reading discussions."
+  },
+  "discordUrl": "https://discord.gg/JK272Ef8Pm",
+  "recruitment": {
+    "status": "closed",
+    "applyUrl": "https://dour-flavor-be8.notion.site/3f07bdec119682f99724815017133229",
+    "closedNotice": "Recruitment for the current cycle has concluded. Our open labs (Room H808/H108) and weekly Tuesday 5:00 PM meetups remain open to every curious student—drop in anytime!",
+    "sidebarLabelOpen": "Recruitment (Live) ↗",
+    "sidebarLabelClosed": "Recruitment (Closed)"
+  },
+  "paperReading": {
+    "sessions": [
+      {
+        "id": "session-oct-2026",
+        "date": "Thursday, October 1, 2026 (5:15 PM onwards)",
+        "intro": "Our monthly reading circle gathers to dissect two foundational systems papers covering relational database internals and highly available distributed key-value stores.",
+        "venue": "AI Skills Lab",
+        "papers": [
+          {
+            "id": "paper-db-arch",
+            "gist": "An end-to-end architectural tour of modern relational DBMS internals: process models, query parsing & optimization, B-Tree storage engines, buffer pool management, and ACID transaction locking/ARIES recovery.",
+            "year": "2007",
+            "title": "Architecture of a Database System",
+            "pdfUrl": "https://dsf.berkeley.edu/papers/fntdb07-architecture.pdf",
+            "authors": "Joseph M. Hellerstein, Michael Stonebraker, and James Hamilton"
+          },
+          {
+            "id": "paper-dynamo",
+            "gist": "The seminal distributed systems paper that pioneered always-writable storage at scale using consistent hashing with virtual nodes, vector clocks for causal versioning, sloppy quorums, hinted handoff, and Merkle-tree anti-entropy.",
+            "year": "2007",
+            "title": "Dynamo: Amazon's Highly Available Key-value Store",
+            "pdfUrl": "https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf",
+            "authors": "Giuseppe DeCandia et al."
+          }
+        ],
+        "status": "upcoming",
+        "monthLabel": "October 2026 Session • Distributed Systems & Storage Engines"
+      }
+    ],
+    "subtitle": "Monthly deep-dives into foundational computer science, systems, and AI research papers.",
+    "defaultChannel": "#plans-and-projects on Discord"
+  },
+  "announcements": [
+    {
+      "id": "recruitment",
+      "date": "September 23, 2026",
+      "order": 0,
+      "title": "Recruitment Concluded for Current Cycle",
+      "hidden": false,
+      "content": [
+        "We're recruiting 1st & 2nd year students. If you're interested in technology, open source, or simply enjoy learning, experimenting, and building things, we'd love to hear from you.",
+        "YOU LIKE SOMETHING? Share it with us. Maybe you've been learning something, building something, or just going down a rabbit hole because you wanted to know how it works. Bring it along. We love learning from each other, and we love sharing what we know."
+      ],
+      "actionUrl": "https://dour-flavor-be8.notion.site/3f07bdec119682f99724815017133229",
+      "actionText": "[View Recruitment Details & Apply on Notion →]",
+      "venueOrDetails": "Applications Closed • Open Labs & Weekly Meetups Open to All"
+    },
+    {
+      "id": "sync",
+      "date": "August 22, 2026",
+      "order": 1,
+      "title": "Weekly Club Sync Every Tuesday at 5:00 PM",
+      "hidden": false,
+      "content": [
+        "Welcome to all new and returning members of FOSS Club KIET! Our primary weekly meeting takes place every Tuesday at 5:00 PM in Room H808 or H108 (confirm on Discord once temporarily). During these sessions, members share lightning talks on recent open source discoveries, review pull requests, and plan upcoming project sprints.",
+        "Additionally, our space is open daily right after your classes conclude. Drop in anytime to work, discuss or ideate."
+      ],
+      "actionText": "[View Weekly Meetup Logs & Gists →]",
+      "actionView": "weekly",
+      "venueOrDetails": "Venue: Room H808 or H108 (confirm on Discord once temporarily), CSE-AI / AI&ML Dept"
+    },
+    {
+      "id": "paper-reading",
+      "date": "September 30, 2026",
+      "order": 2,
+      "title": "Monthly Research Paper Reading Circle",
+      "hidden": false,
+      "content": [
+        "Our monthly reading circle gathers to dissect seminal research papers across computer science. Our next session is scheduled for Thursday, October 1, 2026, starting at 5:15 PM onwards in the AI Skills Lab.",
+        "We will be discussing two landmark systems papers:",
+        "1. \"Architecture of a Database System\" by Joseph M. Hellerstein, Michael Stonebraker, and James Hamilton (2007) — an architectural exploration of modern relational database management systems, covering storage engines, query processors, and transaction managers.",
+        "2. \"Dynamo: Amazon's Highly Available Key-value Store\" by Giuseppe DeCandia et al. (2007) — the seminal distributed systems paper introducing consistent hashing, vector clocks, sloppy quorums, and anti-entropy for high-availability distributed storage.",
+        "All students and enthusiasts interested in databases, distributed systems, and open technical discussions are welcome to attend. Further discussion and paper links are available on our Discord server in the #plans-and-projects channel."
+      ],
+      "actionText": "[View All Monthly Paper Titles & Gists →]",
+      "actionView": "papers",
+      "venueOrDetails": "Date: Thursday, October 1, 2026 (5:15 PM onwards) • Venue: AI Skills Lab"
+    },
+    {
+      "id": "bootcamp",
+      "date": "August 20, 2026",
+      "order": 3,
+      "title": "Linux Basics & Open-Source History Bootcamp Scheduled for September 9",
+      "hidden": false,
+      "content": [
+        "FOSS Club KIET is proud to announce our upcoming Linux Basics & Open-Source History Bootcamp on September 9, 2026 (17:00 - 20:30) in Room H106, KIET. A beginner-friendly session where you won't just learn Linux, you'll play it. Explore an abandoned system in our browser adventure, uncover hidden files, unlock gates, and learn how to start contributing to open source this semester.",
+        "Modules will cover Linux Fundamentals (core CLI navigation, filesystem hierarchy, and essential utilities), Open-Source History, and our browser-based Linux quest puzzle adventure. Absolute beginners welcome - bring a laptop with a modern web browser and a Google account. Nothing to install."
+      ],
+      "actionText": "[View Full Bootcamp Schedule & Modules →]",
+      "actionView": "bootcamp",
+      "venueOrDetails": "Date: September 9, 2026 (17:00 - 20:30) • Venue: Room H106, KIET"
+    }
+  ],
+  "weeklyMeetups": {
+    "items": [],
+    "subtitle": "Week-by-week log of lightning talks, discussions, and project sprints.",
+    "defaultTimeAndVenue": "Every Tuesday @ 5:00 PM IST • Room H808 / H108"
+  },
+  "sidebarSchedule": [
+    {
+      "id": "sched-1",
+      "label": "Daily Open Hours:",
+      "value": "Everyday after classes"
+    },
+    {
+      "id": "sched-2",
+      "label": "Weekly Meetup:",
+      "value": "Tuesdays @ 5:00 PM IST"
+    },
+    {
+      "id": "sched-3",
+      "label": "Club Room Location:",
+      "value": "Room H808 or H108 (confirm on Discord once temporarily)"
+    },
+    {
+      "id": "sched-4",
+      "label": "Paper Reading:",
+      "value": "Monthly discussion date varies"
+    }
+  ]
+}
